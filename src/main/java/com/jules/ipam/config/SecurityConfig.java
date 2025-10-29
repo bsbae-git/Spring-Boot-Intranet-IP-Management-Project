@@ -31,7 +31,7 @@ public class SecurityConfig {
         http
                 .csrf().disable() // For simplicity in API testing; enable with proper handling in production
                 .authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll() // Allow H2 console access
+                .antMatchers("/h2-console/**", "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll() // Allow H2 console and Swagger UI access
                 .antMatchers("/api/ips").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/ips/allocate", "/api/ips/release", "/api/networks").hasRole("ADMIN")
                 .anyRequest().authenticated()
