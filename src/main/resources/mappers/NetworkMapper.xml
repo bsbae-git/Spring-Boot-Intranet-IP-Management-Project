@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jules.ipam.dao.NetworkDAO">
+
+    <resultMap id="networkResultMap" type="com.jules.ipam.vo.NetworkVO">
+        <id property="id" column="id"/>
+        <result property="cidr" column="cidr"/>
+        <result property="networkAddress" column="network_address"/>
+        <result property="broadcastAddress" column="broadcast_address"/>
+        <result property="subnetMask" column="subnet_mask"/>
+    </resultMap>
+
+    <insert id="insertNetwork" parameterType="com.jules.ipam.vo.NetworkVO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO network (cidr, network_address, broadcast_address, subnet_mask)
+        VALUES (#{cidr}, #{networkAddress}, #{broadcastAddress}, #{subnetMask})
+    </insert>
+
+</mapper>
