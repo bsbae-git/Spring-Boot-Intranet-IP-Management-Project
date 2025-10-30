@@ -11,9 +11,10 @@
         <result property="ipAddress" column="ip_address"/>
         <result property="status" column="status"/>
         <result property="networkId" column="network_id"/>
+        <result property="userId" column="user_id"/>
     </resultMap>
 
-    <insert id="insertIpAddressList" parameterType="java.util.List">
+    <insert id="insertIpAddressList" parameterType="java.util.List" flushCache="true">
         INSERT INTO ip_address (ip_address, status, network_id)
         VALUES
         <foreach collection="list" item="item" separator=",">
@@ -35,7 +36,7 @@
     </update>
 
     <select id="searchIps" parameterType="com.jules.ipam.dto.SearchCriteriaDTO" resultMap="ipAddressResultMap">
-        SELECT ip.id, ip.ip_address, ip.status, ip.network_id
+        SELECT ip.id, ip.ip_address, ip.status, ip.network_id, a.user_id
         FROM ip_address ip
         LEFT JOIN allocation a ON ip.id = a.ip_id
         <where>

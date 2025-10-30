@@ -12,7 +12,7 @@
         <result property="subnetMask" column="subnet_mask"/>
     </resultMap>
 
-    <insert id="insertNetwork" parameterType="com.jules.ipam.vo.NetworkVO" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertNetwork" parameterType="com.jules.ipam.vo.NetworkVO" useGeneratedKeys="true" keyProperty="id" flushCache="true">
         INSERT INTO network (cidr, network_address, broadcast_address, subnet_mask)
         VALUES (#{cidr}, #{networkAddress}, #{broadcastAddress}, #{subnetMask})
     </insert>

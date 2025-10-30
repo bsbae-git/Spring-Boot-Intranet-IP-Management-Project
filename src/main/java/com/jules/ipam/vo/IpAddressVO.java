@@ -8,6 +8,7 @@ public class IpAddressVO implements Serializable {
     private String ipAddress;
     private String status; // AVAILABLE, RESERVED, ALLOCATED
     private Integer networkId;
+    private String userId; // From Allocation table
 
     // Manual Getters
     public Integer getId() {
@@ -26,6 +27,10 @@ public class IpAddressVO implements Serializable {
         return networkId;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
     // Manual Setters
     public void setId(Integer id) {
         this.id = id;
@@ -41,5 +46,9 @@ public class IpAddressVO implements Serializable {
 
     public void setNetworkId(Integer networkId) {
         this.networkId = networkId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

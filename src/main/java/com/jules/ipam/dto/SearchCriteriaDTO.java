@@ -4,7 +4,7 @@ public class SearchCriteriaDTO {
     private String ipAddress;
     private String status;
     private String userId;
-    private int page = 1;
+    private int page = 0; // Default to 0 for 0-indexed pagination
     private int pageSize = 10;
 
     // Manual Getters
@@ -29,7 +29,7 @@ public class SearchCriteriaDTO {
     }
 
     public int getOffset() {
-        return (page - 1) * pageSize;
+        return page * pageSize; // Corrected for 0-indexed pages
     }
 
     // Manual Setters
