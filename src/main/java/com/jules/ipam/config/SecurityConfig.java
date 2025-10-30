@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                    .defaultSuccessUrl("/index.html", true) // Redirect to index.html on success
                 .and()
                 .httpBasic()
                 .and()

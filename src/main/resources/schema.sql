@@ -14,7 +14,7 @@ CREATE TABLE ip_address (
     FOREIGN KEY (network_id) REFERENCES network(id)
 );
 
-CREATE TABLE user (
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
