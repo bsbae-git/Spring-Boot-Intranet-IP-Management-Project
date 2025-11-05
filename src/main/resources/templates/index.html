@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Jules IPAM</title>
+</head>
+<body>
+    <h1>Jules IPAM</h1>
+
+    <div sec:authorize="isAuthenticated()">
+        <p>Welcome, <span sec:authentication="name">User</span>!</p>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout" />
+        </form>
+    </div>
+
+    <hr/>
+
+    <h2>Scan Network</h2>
+    <form th:action="@{/scan}" method="post">
+        <label for="subnet">Subnet (e.g., 192.168.1.0/24):</label>
+        <input type="text" id="subnet" name="subnet" />
+        <input type="submit" value="Scan" />
+    </form>
+
+    <hr/>
+
+    <h2>IP Address List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>IP Address</th>
+                <th>MAC Address</th>
+                <th>Hostname</th>
+                <th>Status</th>
+                <th>Last Seen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="ip : ${ipList}">
+                <td th:text="${ip.id}">1</td>
+                <td th:text="${ip.ipAddress}">192.168.1.1</td>
+                <td th:text="${ip.macAddress}">00:00:00:00:00:00</td>
+                <td th:text="${ip.hostname}">example.com</td>
+                <td th:text="${ip.status}">active</td>
+                <td th:text="${ip.lastSeen}">2025-01-01 12:00:00</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
